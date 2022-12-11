@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace McxEventList;
+namespace Mcx\EventList;
 
 use Shopware\Core\Framework\Plugin;
 

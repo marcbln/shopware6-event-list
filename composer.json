@@ -1,18 +1,25 @@
 {
-  "name": "swag/plugin-skeleton",
-  "description": "Skeleton plugin",
-  "type": "shopware-platform-plugin",
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "McxEventList\\": "src/"
+    "name":        "mcx/shopware6-event-list",
+    "description": "Parses source code of the shopware installation and lists all events found",
+    "version":     "0.0.1",
+    "type":        "shopware-platform-plugin",
+    "license":     "MIT",
+    "authors":     [
+        {"name": "Marc Christenfeldt", "role": "main developer", "email": "sw6@christenfeldt-edv.de", "homepage": "http://christenfeldt-edv.de"}
+    ],
+    "autoload":    {
+        "psr-4": {
+            "Mcx\\EventList\\": "src/"
+        }
+    },
+    "extra":       {
+        "shopware-plugin-class": "Mcx\\EventList\\McxEventList",
+        "label":                 {
+            "de-DE": "Event List",
+            "en-GB": "Event List"
+        }
+    },
+    "require":     {
+        "shopware/core": "^6.4"
     }
-  },
-  "extra": {
-    "shopware-plugin-class": "McxEventList\\McxEventList",
-    "label": {
-      "de-DE": "Skeleton plugin",
-      "en-GB": "Skeleton plugin"
-    }
-  }
 }

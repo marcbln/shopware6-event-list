@@ -50,12 +50,9 @@ class EventListCommand extends Command
         $traverser->addVisitor($myVisitor);
 
         foreach ($files as $pathFile) {
-            // $this->io->info("==== $pathFile");
             $ast = $this->_parseFile($pathFile);
-
             $myVisitor->reset($pathFile);
             $traverser->traverse($ast);
-            // UtilDebug::d($myVisitor);
         }
 
         UtilDebug::dd($myVisitor->found);

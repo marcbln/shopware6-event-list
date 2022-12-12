@@ -65,13 +65,13 @@ class MyNodeVisitor extends NodeVisitorAbstract
 
             $eventClass = trim($matches[1], "\n\r \"'\\");
             $constName = $node->consts[0]->name->name;
-            $constValue = $this->_getClassConstValue($node->consts[0]->value);
+            $eventName = $this->_getClasseventName($node->consts[0]->value);
             $classFQN = $this->currentNamespace . self::NAMESPACE_SEPARATOR . $this->currentClassname;
 
             $this->found[] = [
                 'file'       => $this->currentFile,
                 'constName'  => "{$classFQN}::{$constName}",
-                'constValue' => $constValue,
+                'eventName' => $eventName,
                 'eventClass' => $eventClass,
                 // 'constDocBlock' => $constDocBlock,
                 // 'constName'  => $constName,
@@ -95,7 +95,7 @@ class MyNodeVisitor extends NodeVisitorAbstract
         $this->useMap = [];
     }
 
-    private function _getClassConstValue(/*\PhpParser\Node\Expr\ClassConstFetch | \PhpParser\Node\Scalar\String_*/ $val): string
+    private function _getClasseventName(/*\PhpParser\Node\Expr\ClassConstFetch | \PhpParser\Node\Scalar\String_*/ $val): string
     {
         if ($val instanceof \PhpParser\Node\Scalar\String_) {
             return self::_stripQuotes($val->getAttribute('rawValue'));

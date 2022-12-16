@@ -30,7 +30,7 @@ class MyNodeVisitor extends NodeVisitorAbstract
         return $val;
     }
 
-    public function enterNode(Node $node)
+    public function enterNode(Node $node): int|Node|null
     {
         // ---- namespace declaration (at top of a file)
         if ($node instanceof \PhpParser\Node\Stmt\Namespace_) {
@@ -60,7 +60,7 @@ class MyNodeVisitor extends NodeVisitorAbstract
             $comment = $node->getDocComment()?->getText() ?? '';
             $comment = str_replace("\n", " ", $comment);
             if (!preg_match('#@Event\((.*)\)#', $comment, $matches)) {
-                return;
+                return null;
             }
 
             $eventClass = trim($matches[1], "\n\r \"'\\");
@@ -78,6 +78,8 @@ class MyNodeVisitor extends NodeVisitorAbstract
                 // 'classFQN'  => $classFQN,
             ];
         }
+
+        return null;
     }
 
 
